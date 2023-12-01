@@ -3,6 +3,7 @@ import HomePlan from './HomePlan'
 import Card from '@/components/ui/Card'
 import axios from 'axios'
 import { Icon } from '@iconify/react'
+import { API } from '@/host'
 
 const Plan = () => {
 
@@ -14,7 +15,7 @@ const Plan = () => {
 
     const fetchData = async () => {
         try {
-            const plan = await axios.get(`http://52.206.149.246:3000/getplans`);
+            const plan = await axios.get(`${API}/getplans`);
             const planData = plan.data.token
             
             setPlan(planData);
@@ -28,7 +29,7 @@ const Plan = () => {
     const handleDelete = async (plan_id) => {
         try {
             
-            await axios.delete(`http://52.206.149.246:3000/deleteplan?plan_id=${plan_id}`);
+            await axios.delete(`${API}/deleteplan?plan_id=${plan_id}`);
             
            
             setPlan(prevCategories =>
@@ -49,7 +50,7 @@ const Plan = () => {
                             <div className="h-[100px]">
                                 <img
                                     className="  h-full w-full   transition-all duration-300 group-hover:scale-105 "
-                                    src={`http://52.206.149.246:3000/${plan.planimage}`}
+                                    src={`${API}/${plan.planimage}`}
                                     alt="Image"
                                    
                                 />

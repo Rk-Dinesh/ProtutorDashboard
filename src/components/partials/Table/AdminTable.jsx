@@ -10,6 +10,7 @@ import {
 } from "react-table";
 import GlobalFilter from "./GlobalFilter";
 import { Link, useNavigate } from "react-router-dom";
+import { API } from "@/host";
 
 
 const COLUMNS = [
@@ -50,7 +51,7 @@ const AdminTable = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://52.206.149.246:3000/getadmin1');
+      const response = await axios.get(`${API}/getadmin1`);
 
       if (response.status === 200) {
         // Add rowIndex to each user object and set it in state
@@ -69,7 +70,7 @@ const AdminTable = () => {
 
   const handleDelete = async (userid) => {
     try {
-      const response = await axios.delete(`http://52.206.149.246:3000/deleteadmin?userid=${userid}`);
+      const response = await axios.delete(`${API}/deleteadmin?userid=${userid}`);
       console.log(response);
       window.location.reload();
     } catch (error) {

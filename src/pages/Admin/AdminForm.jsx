@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Card from "@/components/ui/Card";
+import { API } from "@/host";
 
 function AdminForm() {
   const [formData, setFormData] = useState({
@@ -21,7 +22,7 @@ function AdminForm() {
     event.preventDefault();
 
 
-    axios.post("http://52.206.149.246:3000/admin", formData)
+    axios.post(`${API}/admin`, formData)
       .then((response) => {
 
         console.log(response.data);

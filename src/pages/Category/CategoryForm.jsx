@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Card from "@/components/ui/Card";
+import { API } from "@/host";
 
 function CategoryForm() {
   const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ const handleInputChange = (event) => {
     formDataToSend.append("categoryimage", formData.categoryimage);
   
     try {
-      const response = await axios.post("http://52.206.149.246:3000/categories", formDataToSend, {
+      const response = await axios.post(`${API}/categories`, formDataToSend, {
         headers: {
           "Content-Type": "multipart/form-data"
         }

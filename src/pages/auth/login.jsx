@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MobileLogo from "@/assets/Bg.png";
+import { API } from '@/host';
 
 function Login({ setToken }) {
     
@@ -26,7 +27,7 @@ function Login({ setToken }) {
                 'Content-Type': 'application/json',
             };
             
-            const response = await axios.post('https://52.206.149.246:3000/adminlogin', formData, { headers });
+            const response = await axios.post(`${API}/adminlogin`, formData, { headers });
             const { token } = response.data;
             
             setToken(token);

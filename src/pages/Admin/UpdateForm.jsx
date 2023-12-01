@@ -6,6 +6,7 @@ import Textinput from "@/components/ui/Textinput";
 import Card from "@/components/ui/Card";
 import axios from "axios";
 import { useParams,useLocation,useNavigate} from "react-router-dom";
+import { API } from "@/host";
 
 
 
@@ -43,7 +44,7 @@ const UpdateAdmin = () => {
     const fetchUserData = async () => {
       try {
        
-        const response = await axios.get(`http://52.206.149.246:3000/getadmin?userid=${userid}`);
+        const response = await axios.get(`${API}/getadmin?userid=${userid}`);
         const responseData = response.data;
        // console.log(responseData)
 
@@ -72,7 +73,7 @@ const UpdateAdmin = () => {
 
     try {
       
-      const response = await axios.put(`http://52.206.149.246:3000/updateadmin?userid=${userid}`, {
+      const response = await axios.put(`${API}/updateadmin?userid=${userid}`, {
         userid,
         fname: fname,
         lname: lname,
