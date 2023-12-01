@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
+import { API } from "@/host";
 
 const GroupChart1 = () => {
 
@@ -11,20 +12,20 @@ const GroupChart1 = () => {
 
   const fetchData = async () => {
     try {
-      const AdminResponse = await axios.get("http://localhost:3000/getadmin1");
+      const AdminResponse = await axios.get(`${API}/getadmin1`);
       if (AdminResponse.status === 200) {
         setAdminCount(AdminResponse.data.length);
       }
 
-      const TeacherResponse = await axios.get("http://localhost:3000/teacherget");
+      const TeacherResponse = await axios.get(`${API}/teacherget`);
       if (TeacherResponse.status === 200) {
         setTeacherCount(TeacherResponse.data.length);
       }
-      const StudentResponse = await axios.get("http://localhost:3000/studentget");
+      const StudentResponse = await axios.get(`${API}/studentget`);
       if (StudentResponse.status === 200) {
         setStudentCount(StudentResponse.data.length);
       }
-      const ParentResponse = await axios.get("http://localhost:3000/parentget");
+      const ParentResponse = await axios.get(`${API}/parentget`);
       if (ParentResponse.status === 200) {
         setParentCount(ParentResponse.data.length);
       }
